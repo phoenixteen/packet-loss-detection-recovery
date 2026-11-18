@@ -1,0 +1,19 @@
+# The UDP sender/receiver use ONLY the Python standard library (no installs).
+#
+# The Ryu SDN controller is the only part that needs packages, and because Ryu
+# is unmaintained (Python <= 3.9 only), it is installed into its own Python 3.9
+# virtualenv by setup_controller.sh -- do NOT pip-install these into system
+# Python 3.12/3.14, it will fail to build.
+#
+#     bash setup_controller.sh      # builds ~/ryu-venv with the versions below
+#
+# Pinned combo that is tested working on Python 3.9 / Ubuntu 26.04 / WSL2:
+#   ryu==4.34
+#   eventlet==0.30.2
+#   dnspython==1.16.0
+#   setuptools==57.5.0   (build-time only; newer setuptools breaks Ryu's setup.py)
+#   wheel==0.37.1        (build-time only)
+#   pbr==5.11.1          (build-time only)
+#
+# Mininet + Open vSwitch are installed from apt by setup_mininet.sh (needs sudo),
+# NOT from pip.
